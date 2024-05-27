@@ -3,7 +3,7 @@ layout: post
 title: Nitro Cold Brew at Home!
 subtitle: Coffeecoffeecoffeecoffeecoffee...
 cover-img: /assets/img/2020-10-19-nitro-cold-brew.jpg
-thumbnail-img: /assets/img/2020-10-19-nitro-cold-brew-thumb.png
+thumbnail-img: /assets/img/2020-10-19-nitro-cold-brew-thumb.jpg
 share-img: /assets/img/2020-10-19-nitro-cold-brew.jpg
 tags: [coffee]
 comments: true
