@@ -21,10 +21,13 @@ author: Matt Himrod
 
 navbar-links:
   About Me: "aboutme"
-  Resources:
-    - Beautiful Jekyll: "https://beautifuljekyll.com"
-    - Learn markdown: "https://www.markdowntutorial.com/"
-  Author's home: "https://deanattali.com"
+  Mark: "https://www.markfromm.net/"
+  Toby: "https://www.instagram.com/tobiasgoodboy"
+  Social Media:
+    - Facebook: "https://www.facebook.com/matthimrod/"
+    - Instagram: "https://www.instagram.com/matthimrod/"
+    - LinkedIn: "https://www.linkedin.com/in/matthimrod/"
+  Resume: "https://www.matthimrod.com/resume"
 
 ################
 # --- Logo --- #
