@@ -27,7 +27,7 @@ navbar-links:
     - Facebook: "https://www.facebook.com/matthimrod/"
     - Instagram: "https://www.instagram.com/matthimrod/"
     - LinkedIn: "https://www.linkedin.com/in/matthimrod/"
-  Resume: "https://www.matthimrod.com/resume"
+  Resume: "/assets/pdf/matthirmod-resume.pdf"
 
 ################
 # --- Logo --- #
