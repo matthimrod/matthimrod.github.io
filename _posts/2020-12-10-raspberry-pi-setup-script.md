@@ -4,10 +4,7 @@ title: Raspberry Pi Setup Script
 subtitle: Automate tedious pi setup
 tags: [raspberrypi, howto]
 author: Matt Himrod
-excerpt: >
-  Automate tedious pi setup
-  
-  When I set up a Raspberry Pi, there are a few things that I have to do right out of the gate to make things easier on myself. They involve putting a few files on the sdcard to make the initial setup easier.
+excerpt_separator: <!--more-->
 ---
 
 ## Automate tedious pi setup
@@ -17,6 +14,7 @@ When I set up a Raspberry Pi, there are a few things that I have to do right out
 * ssh
 * wpa_supplicant.conf
 * set_up.sh
+<!--more-->
 
 The first file is just a blank file that triggers the pi to enable ssh. I set up most of my Raspberry Pis to be headless, so this combined with a reserved IP address in my router allows me to ssh to the Pi without having to first connect it to a monitor and keyboard.
 
