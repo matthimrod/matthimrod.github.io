@@ -6,6 +6,8 @@ tags: [howto]
 author: Matt Himrod
 ---
 
+#### Using dotbot to bootstrap a dotfiles repository
+
 A while ago, I wrote about using a bare git repository to manage my dotfiles. That worked somewhat well, but it had some shortcomings. Honestly, it's been a while since I switched from that particular setup, and I forget what my main motivating reasons were. I do vaguely recall running `config clean` one day... that removes any files in the profile that aren't in the repository, which would essentially delete my entire user profile... that *might* have had something to do with it.
 
 Regardless of my motivations, I quickly adapted to using an open source application called [dotbot](https://github.com/anishathalye/dotbot) to help with the task becuase it just ended up being a better way to do things. First, instead of making a bare repository out of my entire user profile and ignoring files that are not under version control, all of the files are in a normal repository and symlinked to their original locations. Fortunately dotbot handles all of this more gracefully.* 

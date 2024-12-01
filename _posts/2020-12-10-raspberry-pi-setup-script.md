@@ -6,6 +6,8 @@ tags: [raspberrypi, howto]
 author: Matt Himrod
 ---
 
+#### Automate tedious pi setup
+
 When I set up a Raspberry Pi, there are a few things that I have to do right out of the gate to make things easier on myself. They involve putting a few files on the sdcard to make the initial setup easier:
 
 * ssh

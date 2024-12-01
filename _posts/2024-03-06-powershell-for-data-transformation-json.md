@@ -6,6 +6,8 @@ tags: [powershell, code]
 author: Matt Himrod
 ---
 
+#### PowerShell makes quick data transformations easy
+
 My team at work has a custom FHIR resource that we work with often called an Operation Outcome. We generate one of these for nearly every record we process, and we also generate versions of these with statistics after a batch is processed. The version of the resource for a record operation includes both the raw incoming record and the transformed outbound record. If we're uploading a document, these outcomes can get large. Recently, one of my teammates was trying to get diagnostic information and reconstruct a document that failed to transmit. He was having trouble loading the file into his editor to pull out the pieces he needed because of the size of the file. 
 
 ## PowerShell to the Rescue!

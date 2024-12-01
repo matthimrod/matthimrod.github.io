@@ -6,6 +6,8 @@ tags: [howto]
 author: Matt Himrod
 ---
 
+#### Using a bare repository for dotfiles
+
 While I don't use Linux as my primary operating system, I do use it a lot both at home and at work. It can be frustrating to try to sync up configurations between different hosts or even just figuring out how to make a new laptop work like an old one. I remembered that some coworkers at my old job had some way of storing all of their dotfiles in Github to make this easier. It took a bit to figure out the best way to make this work.
 
 First, I use a bare git repository. Bare repositories are typically used for sharing rather than working because they don't store a working directory. In this case, we're going to use it because we don't need all of features of a full repo. We're just making it easier for us to store these files and deploy them to other machines. 

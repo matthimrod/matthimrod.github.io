@@ -6,6 +6,8 @@ tags: [vpn, howto]
 author: Matt Himrod
 ---
 
+#### Setting up a VPN for personal use
+
 So you want to run an OpenVPN Server on a Raspberry Pi? I did too, but it wasn't easy to figure out the first time. If you want to skip all of this and do it the easy way, head over to https://pivpn.io/ for the one-line script. If you want to dive in, understand what's going on, and configure it your own way, keep reading.
 
 ## OpenVPN Server

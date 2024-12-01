@@ -6,6 +6,8 @@ tags: [texteditor, trivia]
 author: Matt Himrod
 ---
 
+#### a.k.a. Why I Don't Use Nano
+
 I've been on a "kids these days don't use command-line editors... get off my lawn..." kick lately... 
 
 Here's some trivia. Many tutorials and how-to documents are written to use the really user-friendly `nano` text editor. Back when I was learning Linux, `nano` was really new, not as widely ported as it is today, and even if available, it wasn't always in default install bundles. Back then, the equivalent (almost literally) was an editor called `pico` from which from which `nano` was cloned. `Pico` was created as the editor component of the [Pine email client](https://en.wikipedia.org/wiki/Pine_(email_client)).

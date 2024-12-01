@@ -10,7 +10,10 @@ comments: true
 author: Matt Himrod
 ---
 
- Anyone who knows my husband or me knows that we really like our cold brew, and they also know that we make our own at home. Nitro cold brew has become a bit of a trend. I had some for the first time in months last week, and I decided to see what is involved in making my own at home. It turns it, not a lot. You just need a mini-keg, some nitrogen canisters, and some regular cold brew to infuse with Nitrogen.
+#### Coffeecoffeecoffeecoffeecoffee...
+![](/assets/img/2020-10-19-nitro-cold-brew.jpg)
+
+Anyone who knows my husband or me knows that we really like our cold brew, and they also know that we make our own at home. Nitro cold brew has become a bit of a trend. I had some for the first time in months last week, and I decided to see what is involved in making my own at home. It turns it, not a lot. You just need a mini-keg, some nitrogen canisters, and some regular cold brew to infuse with Nitrogen.
 
 
 I decided to try this kit from Amazon: NutriChef NCNTROCB10. I'll need to raise the bottom shelf of the refrigerator a peg to get it to mostly fit there, but I should be able to convince my husband to let me do that. 🤞 (Anyone who knows us knows that he's in charge of the kitchen. I can make a basic meal, but he gets fancy.)

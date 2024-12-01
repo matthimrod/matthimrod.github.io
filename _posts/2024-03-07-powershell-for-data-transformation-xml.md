@@ -6,6 +6,8 @@ tags: [powershell, code]
 author: Matt Himrod
 ---
 
+#### PowerShell makes more quick data transformations easy
+
 This one bugged me for a few days. I don't think this script is the best solution to the problem at hand, but it was still fun to figure out.
 
 We use an Interface Engine for a lot of our data feeds because they originate as HL7, and Interface Engines are the easiest way to deal with streams of HL7 messages. Under the hood, the interface engine uses a SQL engine, and some of the underlying data tables have fields that contain XML data. Most of it is reporting or metrics data - in this case, the process that prunes successfully processed records after a day.

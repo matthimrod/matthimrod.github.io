@@ -11,6 +11,9 @@ tags: [vpn, howto]
 author: Matt Himrod
 ---
 
+#### A Practical Raspberry Pi Project
+![](/assets/img/2021-01-25-raspberry-pi-busy-light.jpg)
+
 COVID-19 has us many of us working from home. My husband and I are both fortunate enough to be in this group. However, as a teacher, his schedule is very predictable. Mine, however, is not. I don't like leaving the door to my office closed all the time, and it's not always easy to tell when I'm on a call because I'm not always the one talking.
 
 With this in mind, I had a problem to solve! I'd found some USB-based "busy light" devices, but they all had short cords. I wanted something wireless that I could mount on the wall outside my home office. I was hoping that I could make something that would automatically change color when communication activity was detected or when my Microsoft Teams status was "on a call" or "do not disturb". 
