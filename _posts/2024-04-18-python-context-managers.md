@@ -5,8 +5,6 @@ tags: [python, code]
 author: Matt Himrod
 ---
 
-#### Python Context Managers
-
 One of my current projects involves some improvements to code that I wrote last year -- specifically enhancing the "Patient Identity Fixer", which is my pet project of sorts. I plan on adding support for a new API that was recently released, but an improvement that I was looking forward to the most was one to boost performance by adding HTTP sessions and connection pooling. A patient with a single MRN in a single system involves at least 11 calls to the EMPI API. Each additional MRN adds 5 more calls, and some patients have a dozen MRNs from the various facilities in the Health System. Creating an HTTPS session for a single API call was taking between 600 and 1000 milliseconds -- almost a full second for each API call! You can see how this adds up quickly! 
 
 Using connection pooling with the Python `requests` library isn't difficult at all, but it involves initializing a `Session` object and closing it at the termination of the program. I'm sure there's a measure of idiot-proofing within Python that will terminate any open network connections when a given program terminates, but to be a good developer, we should do our housekeeping. The easiest way to do that is with [Context Managers](https://docs.python.org/3/reference/datamodel.html#context-managers).

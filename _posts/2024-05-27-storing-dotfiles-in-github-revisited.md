@@ -4,9 +4,11 @@ title: Storing dotfiles in GitHub Revisited
 subtitle: Using dotbot to bootstrap a dotfiles repository
 tags: [howto]
 author: Matt Himrod
+excerpt: >
+  A while ago, I wrote about using a bare git repository to manage my dotfiles. That worked somewhat well, but it had some shortcomings. Since, I've started using a new utility.
 ---
 
-#### Using dotbot to bootstrap a dotfiles repository
+## Using dotbot to bootstrap a dotfiles repository
 
 A while ago, I wrote about using a bare git repository to manage my dotfiles. That worked somewhat well, but it had some shortcomings. Honestly, it's been a while since I switched from that particular setup, and I forget what my main motivating reasons were. I do vaguely recall running `config clean` one day... that removes any files in the profile that aren't in the repository, which would essentially delete my entire user profile... that *might* have had something to do with it.
 

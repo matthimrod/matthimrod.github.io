@@ -4,13 +4,13 @@ title: 'PowerShell for Data Transformation: StringData'
 subtitle: PowerShell to the rescue!
 tags: [powershell, code]
 author: Matt Himrod
-excerpt: >
-  To borrow from a favorite web comic: [whenever I learn a new skill, I concoct elaborate fantasy scenarios where it lets me save the day](https://xkcd.com/208). Actually, it feels like I don't need to concoct elaborate scenarios, the scenarios seem to find me after I've coincidentally learned an applicable skill.
+excerpt_separator: <!--more-->
 ---
 
-## PowerShell to the rescue!
-
 To borrow from a favorite web comic: [whenever I learn a new skill, I concoct elaborate fantasy scenarios where it lets me save the day](https://xkcd.com/208). Actually, it feels like I don't need to concoct elaborate scenarios, the scenarios seem to find me after I've coincidentally learned an applicable skill.
+<!--more-->
+
+## PowerShell to the rescue!
 
 ![](https://imgs.xkcd.com/comics/regular_expressions.png)
 
