@@ -4,3 +4,4 @@ title: My website
 permalink: /
 ---
 
+A short sentence.
