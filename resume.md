@@ -1,7 +1,7 @@
 ---
 layout: page
-title: My Resume
+title: Resume
 permalink: /resume/
 ---
 
-<embed src="/assets/pdf/matthirmod-resume.pdf" type="application/pdf" width="100%" height="500">
+<embed src="/assets/pdf/matthirmod-resume.pdf" type="application/pdf" width="100%" height="100%">
