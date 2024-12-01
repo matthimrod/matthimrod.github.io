@@ -1,7 +1,7 @@
 ---
 layout: page
-title: About me
-subtitle: A few bits of information
+title: About
+permalink: /about/
 ---
 
 My name is Matt Himrod. 
