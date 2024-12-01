@@ -4,9 +4,11 @@ title: 'PowerShell for Data Transformation: XML'
 subtitle: PowerShell makes more quick data transformations easy
 tags: [powershell, code]
 author: Matt Himrod
+excerpt: >
+  This one bugged me for a few days. I don't think this script is the best solution to the problem at hand, but it was still fun to figure out.
 ---
 
-#### PowerShell makes more quick data transformations easy
+## PowerShell makes more quick data transformations easy
 
 This one bugged me for a few days. I don't think this script is the best solution to the problem at hand, but it was still fun to figure out.
 

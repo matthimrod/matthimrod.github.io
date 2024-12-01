@@ -9,9 +9,13 @@ thumbnail-img: /assets/img/2021-01-25-raspberry-pi-busy-light-thumb.jpg
 share-img: /assets/img/2021-01-25-raspberry-pi-busy-light.jpg
 tags: [vpn, howto]
 author: Matt Himrod
+excerpt: >
+  COVID-19 has us many of us working from home. My husband and I are both fortunate enough to be in this group. However, as a teacher, his schedule is very predictable. Mine, however, is not. I don't like leaving the door to my office closed all the time, and it's not always easy to tell when I'm on a call because I'm not always the one talking.
+  
+  <img src='/assets/img/2021-01-25-raspberry-pi-busy-light-thumb.jpg' />
 ---
 
-#### A Practical Raspberry Pi Project
+## A Practical Raspberry Pi Project
 ![](/assets/img/2021-01-25-raspberry-pi-busy-light.jpg)
 
 COVID-19 has us many of us working from home. My husband and I are both fortunate enough to be in this group. However, as a teacher, his schedule is very predictable. Mine, however, is not. I don't like leaving the door to my office closed all the time, and it's not always easy to tell when I'm on a call because I'm not always the one talking.

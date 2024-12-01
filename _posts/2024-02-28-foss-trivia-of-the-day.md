@@ -4,9 +4,10 @@ title: FOSS (Free and Open Source Software) Trivia of the Day
 subtitle: a.k.a. Why I Don't Use Nano
 tags: [texteditor, trivia]
 author: Matt Himrod
+excerpt: a.k.a. Why I Don't Use Nano
 ---
 
-#### a.k.a. Why I Don't Use Nano
+## a.k.a. Why I Don't Use Nano
 
 I've been on a "kids these days don't use command-line editors... get off my lawn..." kick lately... 
 

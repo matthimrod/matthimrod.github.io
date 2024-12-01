@@ -4,9 +4,11 @@ title: Storing dotfiles in GitHub
 subtitle: Using a bare repository for dotfiles
 tags: [howto]
 author: Matt Himrod
+excerpt: >
+  While I don't use Linux as my primary operating system, I do use it a lot both at home and at work. It can be frustrating to try to sync up configurations between different hosts or even just figuring out how to make a new laptop work like an old one. I remembered that some coworkers at my old job had some way of storing all of their dotfiles in Github to make this easier. It took a bit to figure out the best way to make this work.
 ---
 
-#### Using a bare repository for dotfiles
+## Using a bare repository for dotfiles
 
 While I don't use Linux as my primary operating system, I do use it a lot both at home and at work. It can be frustrating to try to sync up configurations between different hosts or even just figuring out how to make a new laptop work like an old one. I remembered that some coworkers at my old job had some way of storing all of their dotfiles in Github to make this easier. It took a bit to figure out the best way to make this work.
 
