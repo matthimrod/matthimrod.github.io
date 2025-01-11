@@ -18,13 +18,13 @@ In other words, given a SQL query with XML in one of the fields, convert the XML
 
 I plan to talk more about `Invoke-Sqlcmd` in the future, so for now, the cmdlet runs the SQL command and returns the results as a PowerShell Object. I guess that's what it says on the label.
 
-```
+```PowerShell
 Invoke-Sqlcmd -TrustServerCertificate -ServerInstance <Server> -Database MirthDB -Query "SELECT ATTRIBUTES FROM EVENT WITH (NOLOCK) WHERE NAME = 'Data Pruner'"
 ```
 
 This returns rows that look something like this:
 
-```
+```xml
 <map>
   <entry>
     <string>Message Date Threshold</string>
@@ -55,7 +55,7 @@ This returns rows that look something like this:
 
 Unfortunately, XML isn't as straightforward as CSV or JSON. XML has features like XPath, XQuery, XSLT, and such. There is probably a better way to do this... but here goes... In order to keep each entry together and not get the whole thing gobbled up, I piped my set of fields from the database through `Select-Xml`, which lets me apply an XPath to the record and parse out a Node. I could have probably just given an XPath of `/` to do a basic parse on this document, but if I give it `/map`, then my node starts with the entries. Each record from `Select-Xml` has a Node with the actual data and some parting information that I don't care about, so I can just expand the Nodes.
 
-```
+```PowerShell
 Invoke-Sqlcmd -TrustServerCertificate -ServerInstance <Server> -Database MirthDB `
               -Query "SELECT ATTRIBUTES FROM EVENT WITH (NOLOCK) WHERE NAME = 'Data Pruner'" `
 | Select-Object -ExpandProperty Attributes `
@@ -65,9 +65,9 @@ Invoke-Sqlcmd -TrustServerCertificate -ServerInstance <Server> -Database MirthDB
 
 The output here is still not very useful. It's a bunch of entries with entries, and everything is truncated, but it's all there. Each entry contains an array of entry entries each having a list of strings, which are key-value pairs. The object is a little weird in structure. I had to do a lot of examination in half-written `ForEach-Object` blocks or using `Select-Object -First 1`, which doesn't sound fun, but actually was.
 
-There are a few summary rows in this "report" in the database that mess up the parsing, so I'm going to skip some trial and error and just say, I needed to filter out the rows with two or fewer fields... Basically the first row has to have all of the fields or else the objects won't roll up together correctly, so each row had to go through a `Where-Object` to check its count before expanding the entry list into another `ForEach-Object` where we create a new PSObject and add each field, otherwise, my idea of going through each entry's entries and adding each as a field/value pair to the PSObject was spot-on (and possibly from StackOverflow). 
+There are a few summary rows in this "report" in the database that mess up the parsing, so I'm going to skip some trial and error and just say, I needed to filter out the rows with two or fewer fields... Basically the first row has to have all of the fields or else the objects won't roll up together correctly, so each row had to go through a `Where-Object` to check its count before expanding the entry list into another `ForEach-Object` where we create a new PSObject and add each field, otherwise, my idea of going through each entry's entries and adding each as a field/value pair to the PSObject was spot-on (and possibly from StackOverflow).
 
-```
+```PowerShell
 Invoke-Sqlcmd -TrustServerCertificate -ServerInstance <Server> -Database MirthDB `
               -Query "SELECT ATTRIBUTES FROM EVENT WITH (NOLOCK) WHERE NAME = 'Data Pruner'" `
 | Select-Object -ExpandProperty Attributes `

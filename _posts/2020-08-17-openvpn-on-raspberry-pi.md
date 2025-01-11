@@ -9,28 +9,30 @@ excerpt: >
 ---
 
 ## Setting up a VPN for personal use
+
 So you want to run an OpenVPN Server on a Raspberry Pi? I did too, but it wasn't easy to figure out the first time. If you want to skip all of this and do it the easy way, head over to https://pivpn.io/ for the one-line script. If you want to dive in, understand what's going on, and configure it your own way, keep reading.
 
 ## OpenVPN Server
+
 First, I'm going to assume that you are already pretty comfortable at a Linux shell, you understand basic networking, and you have a Raspberry Pi with the OS image already on it. As a convention, commands that you need to type will be in fixed-width text, and the prompt that you should see will appear at the beginning of the line.
 
 First, it's always a good idea to make sure your Raspberry Pi is up-to-date. Since I'm going to be doing a lot of things that require root, the first thing I'm going to do is elevate to root and do the updates.
 
-```
+```bash
 pi@raspberrypi:~ $ sudo su -
 root@raspberrypi:~ # apt-get update
 root@raspberrypi:~ # apt-get upgrade
 ```
 
-I'll be implementing certificate-based authentication with TLS encryption. The next step is to install OpenVPN and Easy-RSA: 
+I'll be implementing certificate-based authentication with TLS encryption. The next step is to install OpenVPN and Easy-RSA:
 
-```
+```bash
 root@raspberrypi:~ # apt-get install openvpn easy-rsa
 ```
 
 Next, we need to put some sample configuration files in place.
 
-```
+```bash
 root@raspberrypi:~ # cp -R /usr/share/doc/openvpn /etc/openvpn
 root@raspberrypi:~ # cp -R /usr/share/doc/openvpn/examples/sample-config-files /etc/openvpn
 root@raspberrypi:~ # cp -R /usr/share/easy-rsa /etc/openvpn/
@@ -38,7 +40,7 @@ root@raspberrypi:~ # cp -R /usr/share/easy-rsa /etc/openvpn/
 
 We need to use Easy-RSA to generate our certificates. Let's go into the Easy-RSA directory and get started by initializing Easy-RSA and generating our Certificate Authority. This is essentially the "root" of our VPN's trust. Note that I'm using "nopass" to build the certificates, but if you prefer to add a passphrase if you prefer by leaving that off.
 
-```
+```bash
 root@raspberrypi:~ # cd /etc/openvpn/easy-rsa/
 root@raspberrypi:/etc/openvpn/easy-rsa # ./easyrsa init-pki
 root@raspberrypi:/etc/openvpn/easy-rsa # ./easyrsa build-ca nopass
@@ -46,33 +48,33 @@ root@raspberrypi:/etc/openvpn/easy-rsa # ./easyrsa build-ca nopass
 
 Now we need to generate the key for the server itself. Note that you'll want to substitute the name of your server for server_name in the command.
 
-```
+```bash
 root@raspberrypi:/etc/openvpn/easy-rsa # ./easyrsa build-server-full server_name nopass
 ```
 
 Next, we need to generate the Diffie Hellman parameters. This one will take a while, so go make some coffee or get a snack.
 
-```
+```bash
 root@raspberrypi:/etc/openvpn/easy-rsa # ./easyrsa gen-dh
 ```
 
 For extra security, we should enable tls-auth, which requires that we generate another key that's shared among the server and all clients.
 
-```
+```bash
 root@raspberrypi:/etc/openvpn/easy-rsa # cd /etc/openvpn
 root@raspberrypi:/etc/openvpn # openvpn --genkey --secret ta.key
 ```
 
 Ok. Now. The fun part. We get to set up the server! Let's start with a sample file.
 
-```
+```bash
 root@raspberrypi:/etc/openvpn # cp sample-config-files/server.conf.gz .
 root@raspberrypi:/etc/openvpn # gunzip server.conf.gz
 ```
 
 Now to edit the configuration file:
 
-```
+```bash
 root@raspberrypi:/etc/openvpn # nano server.conf
 ```
 
@@ -81,7 +83,8 @@ I leave a lot of the defaults in place such as the port, protocol, and a few oth
 First, you need to add the CA Certificate, Server Certificate, Server Key, and Diffe Hellman parameters. I prefer to embed my certificates and keys in this file, especially on the clients. You do this by enclosing the text of the certificates in XML-like tags. You can also just reference the filenames as in the sample, but you'll have to add the full path. The embedded versions look something like this -- note that I've shortened the certificate text because this is just an illustration:
 
 ### Contents of /etc/openvpn/easy-rsa/pki/ca.crt
-```
+
+```text
 <ca>
 -----BEGIN CERTIFICATE-----
 MIIDSzCCAjOgAwIBAgIUNP2LEVnQuakBRx1Z/N2wdoGu/IwwDQYJKoZIhvcNAQEL
@@ -95,6 +98,8 @@ C+upRglCpJSxI2bgAJT5Kg5W5fZNhHWGii4uikAZjQ==
 ```
 
 ### Contents of /etc/openvpn/easy-rsa/pki/issued/server_name.crt
+
+```text
 <cert>
 -----BEGIN CERTIFICATE-----
 MIIDcjCCAlqgAwIBAgIRAM0/vSMPiMAtBpmmTj4FzC0wDQYJKoZIhvcNAQELBQAw
@@ -105,10 +110,13 @@ bNlvo6CNU+X5FWG7n0xTCymZ1/CqHKFagaB88hW+pm64DguxaevMyRReyUmUsCoq
 j61GdBwnT+8ES+eIgDsjsK7Bxk5TWQ==
 -----END CERTIFICATE-----
 </cert>
+```
 
 ### Contents of /etc/openvpn/easy-rsa/pki/private/server_name.key
+
 * Note that this file should be kept secret as it's the server's cryptographic private key.
-```
+
+```text
 <key>
 -----BEGIN PRIVATE KEY-----
 MIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCtF8UC2vSezBUt
@@ -122,7 +130,8 @@ zG63tWy0AMZEJdRWP7fomw==
 ```
 
 ### Contents of /etc/openvpn/easy-rsa/pki/dh.pem
-```
+
+```text
 <dh>
 -----BEGIN DH PARAMETERS-----
 MIIBCAKCAQEA9hzVwmsqCWo9DQCZjvoyI8uOio8Rs5XgUOViIhRW8A20nKTTUYGz
@@ -132,17 +141,18 @@ P6at3CtWN6jZNiYyTiJMrkT9yQ48jvQeewIBAg==
 -----END DH PARAMETERS-----
 </dh>
 ```
+
 You'll next need to set the network topology. You should just remove the semicolon from the line that contains topology subnet.
 
 Next, you'll define the VPN subnet. The way OpenVPN works is that it creates a network adapter to communicate with the clients. On the server side, you can route this network to the internet or to the server's local network (which we will cover a little later). You should be cautious about picking networks that are common default networks. For example. many routers use 192.168.0.1 or 192.168.1.1. The default here is 10.8.0.0, but I prefer to change this, so I'll use 172.30.0.1. Clients will be assigned addresses on this network.
 
-```
+```text
 server 172.30.0.0 255.255.255.0
 ```
 
-Here's where the VPN starts becoming more useful. You will need to define the network on the server-side of the VPN so that the clients can route to it. My home router uses 10.0.0.0/24, so we'll push that to the clients. 
+Here's where the VPN starts becoming more useful. You will need to define the network on the server-side of the VPN so that the clients can route to it. My home router uses 10.0.0.0/24, so we'll push that to the clients.
 
-```
+```text
 push "route 10.0.0.0 255.255.255.0"
 ```
 
@@ -150,7 +160,7 @@ Note that it's a good idea to avoid the common router networks with your local n
 
 The last thing we need to do is add the tls-auth key. As with the other crypto files, we can either embed this with XML-like tags or reference the file. Note the "key-direction" directive, which is 0 on the server and 1 on the clients.
 
-```
+```text
 key-direction 0
 <tls-auth>
 -----BEGIN OpenVPN Static key V1-----
@@ -166,13 +176,13 @@ f0220e1a40956ca471ea792434341820
 
 Now you need to make your Raspberry Pi into a router. Edit sysctl.conf with the following command:
 
-```
+```bash
 root@raspberrypi:/etc/openvpn # nano /etc/sysctl.conf
 ```
 
 You'll want to uncomment the following lines by removing the hash sign (#) from the start of each line:
 
-```
+```text
 net.ipv4.ip_forward = 1
 net.ipv4.conf.all.accept_redirects = 0
 net.ipv4.conf.all.send_redirects = 0
@@ -181,35 +191,35 @@ net.ipv4.conf.all.accept_source_route = 0
 
 Now reload sysctl.
 
-```
+```bash
 root@raspberrypi:/etc/openvpn # sysctl -p /etc/sysctl.conf
 ```
 
 We're almost done. We need to enable NAT in the built-in iptables firewall. This will allow our VPN to access the Internet through our local Internet connection should that be necessary. If you're using your VPN to create a secure connection from an untrusted network (such as public WiFi) then this is especially important. You'll want to both run this from your shell and add it to the /etc/rc.local script so that it's run every time your Pi boots.
 
-```
+```bash
 root@raspberrypi:/etc/openvpn # iptables --table nat --append POSTROUTING --jump MASQUERADE
 ```
 
 And of course, to edit rc.local:
 
-```
+```bash
 root@raspberrypi:/etc/openvpn # nano /etc/rc.local
 ```
 
 Paste this at the end of the file:
 
-```
+```bash
 iptables --table nat --append POSTROUTING --jump MASQUERADE
 ```
 
 Once you've set everything, you can start your OpenVPN server with systemctl.
 
-```
+```bash
 root@raspberrypi:/etc/openvpn # systemctl start openvpn
 ```
 
-Congratulations, you've set up the server! There's one last thing that you need to do to make this useful, and that's to set a port forwarding rule in your router. The way to do this depends on your specific router model. Unless you changed it in your server configuration file, you'll need to forward UDP port 1194 to the same port on your Raspberry Pi. 
+Congratulations, you've set up the server! There's one last thing that you need to do to make this useful, and that's to set a port forwarding rule in your router. The way to do this depends on your specific router model. Unless you changed it in your server configuration file, you'll need to forward UDP port 1194 to the same port on your Raspberry Pi.
 
 ## OpenVPN Client
 
@@ -219,21 +229,22 @@ I'll assume you're using the latest OpenVPN application on the client. You can g
 
 First, we need to generate a certificate and key for the client similarly to how generated the server certificate and key. Note that you'll want to substitute the name of your client for client_name in the command. You'll want to do this for each client.
 
-```
+```bash
 root@raspberrypi:~ # cd /etc/openvpn/easy-rsa/
 root@raspberrypi:/etc/openvpn/easy-rsa # ./easyrsa build-client-full client_name nopass
 ```
 
 You'll want to make a copy of the client config file for the client, and I recommend naming it with a .ovpn extension, especially for Windows and mobile clients. Most of the file stays as-is except for the things that are specific to the server. The first is the remote line, which tells the client where to connect to. You'll need your router's public IP address or a dynamic DNS name if you don't have a static IP address. In this example, the server's public IP address is 12.34.56.78 and the port number is the default port of 1194.
 
-```
+```text
 remote 12.34.56.78 1194
 ```
 
 You'll use the same CA certificate and tls-auth key as the server, but you'll use the newly generated client certificate and key for their respective sections.
 
 ### Contents of /etc/openvpn/easy-rsa/pki/ca.crt
-```
+
+```text
 <ca>
 -----BEGIN CERTIFICATE-----
 MIIDSzCCAjOgAwIBAgIUNP2LEVnQuakBRx1Z/N2wdoGu/IwwDQYJKoZIhvcNAQEL
@@ -247,7 +258,8 @@ C+upRglCpJSxI2bgAJT5Kg5W5fZNhHWGii4uikAZjQ==
 ```
 
 ### Contents of /etc/openvpn/easy-rsa/pki/issued/client_name.crt
-```
+
+```text
 <cert>
 -----BEGIN CERTIFICATE-----
 MIIDWjCCAkKgAwIBAgIRAITbzc/KlaioTvFDnNNT6b0wDQYJKoZIhvcNAQELBQAw
@@ -261,8 +273,10 @@ WPBXlR0PAQS1dpoSrF+ev3SO3YfarMX+CthRDeX8pPF+69FA4a4fBu6R8GQuyw==
 ```
 
 ### Contents of /etc/openvpn/easy-rsa/pki/private/client_name.key
+
 * Note that this file should be kept secret as it's the client's cryptographic private key.
-```
+
+```text
 <key>
 -----BEGIN PRIVATE KEY-----
 MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDWAEBJN2DPEMt4
@@ -277,7 +291,7 @@ nDocHy4l6Rvf9GkneAbt2KW6nNxIcHukd0hG6W5QEBUmLwoTJAIBl9SH0AyJpxA3
 
 A few lines down, add the tls-auth key. This is the same key as was on the server, but the "key-direction" is 1 on the client.
 
-```
+```text
 key-direction 1
 <tls-auth>
 -----BEGIN OpenVPN Static key V1-----
@@ -293,8 +307,8 @@ f0220e1a40956ca471ea792434341820
 
 Lastly, there's one more thing that you may want to add to the config file. Personally, I make two versions -- one for when I just want to access my home network and a second for when I'm on an untrusted network like a coffee shop WiFi and I want to use the VPN as a layer of security. For the "full tunnel" version -- that is, the one where you want all traffic to go over the VPN -- add the following line to the end of the file.
 
-```
+```text
 redirect-gateway def1 bypass-dhcp
 ```
 
-That's it! Save your config file and securely transfer it to your client. Import it into your OpenVPN client. You will have to test this from a different network than your Raspberry Pi is on, but you should be able to access resources on that network, and if you added the redirect-gateway line to your config file, you should see that you're accessing the Internet from your Raspberry Pi's public IP address. 
+That's it! Save your config file and securely transfer it to your client. Import it into your OpenVPN client. You will have to test this from a different network than your Raspberry Pi is on, but you should be able to access resources on that network, and if you added the redirect-gateway line to your config file, you should see that you're accessing the Internet from your Raspberry Pi's public IP address.

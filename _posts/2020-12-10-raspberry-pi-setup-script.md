@@ -22,8 +22,8 @@ The third file is a script that I made to make the initial configuration easier.
 
 Here's the script. I'll break apart the different sections below:
 
-
-```#!/bin/bash
+```bash
+#!/bin/bash
 
 apt-get update
 apt-get -y upgrade
