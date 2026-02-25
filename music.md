@@ -1,8 +1,10 @@
 ---
 layout: page
-title: What's Matt Listening To...
+title: Music
 permalink: /music/
 ---
+
+## What's Matt Listening To...
 
 Here is a list of music that I find myself telling my friends about ...
 
