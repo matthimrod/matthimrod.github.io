@@ -2,6 +2,7 @@
 layout: page
 title: Music
 permalink: /music/
+nav_exclude: true
 ---
 
 ## What's Matt Listening To...
@@ -57,9 +58,9 @@ Deep/Tech/Prog House / Indie Dance
 
 ### Tracks to Get Started...
 
-* [<img src="assets/spotify.svg" alt="Spotify" height="15"/> Birthright](https://music.youtube.com/watch?v=mk5rUwd-Qlo&si=lnL33ZWY6kq8jq1n)
+* [<img src="assets/youtube-music.svg" alt="Spotify" height="15"/> Birthright](https://music.youtube.com/watch?v=mk5rUwd-Qlo&si=lnL33ZWY6kq8jq1n)
 <br />
-[<img src="assets/youtube-music.svg" alt="Spotify" height="15"/> Birthright](https://open.spotify.com/track/24KBMWfxD8l3z9JwfgU9oL?si=8d9ae7c19bcb46bb)
+[<img src="assets/spotify.svg" alt="Spotify" height="15"/> Birthright](https://open.spotify.com/track/24KBMWfxD8l3z9JwfgU9oL?si=8d9ae7c19bcb46bb)
 * [<img src="assets/youtube-music.svg" alt="Spotify" height="15"/>Wetlands](https://music.youtube.com/watch?v=oLqPhxb3c-k&si=HRUCSt36r2JugQ-p)
 <br />
 [<img src="assets/spotify.svg" alt="Spotify" height="15"/> Wetlands](https://open.spotify.com/track/3DTdC9y1dLT1BmfV8mgKKi?si=47cf9251f97d40d2)
