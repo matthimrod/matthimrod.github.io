@@ -1,9 +1,11 @@
 ---
 layout: page
-title: Music
+# title: Music
 permalink: /music/
 nav_exclude: true
 ---
+
+# Music
 
 ## What's Matt Listening To...
 
