@@ -5,8 +5,6 @@ permalink: /music/
 nav_exclude: true
 ---
 
-# Music
-
 ## What's Matt Listening To...
 
 Here is a list of music that I find myself telling my friends about ...
