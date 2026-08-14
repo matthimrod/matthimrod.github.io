@@ -1,1 +1,3 @@
-gem "minimal-mistakes-jekyll"
+gem "minima"
+
+
