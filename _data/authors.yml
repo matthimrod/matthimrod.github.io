@@ -1,0 +1,16 @@
+# /_data/authors.yml
+
+Matt Himrod:
+  name        : "Matt Himrod"
+  avatar      : "/assets/img/avatar-icon.png"
+  links:
+    - label: "BlueSky"
+      icon: "fa-brands fa-square-bluesky"
+      url: "https://bsky.app/profile/matthimrod.com"
+    - label: "GitHub"
+      icon: "fa-brands fa-square-github"
+      url: "https://github.com/matthimrod"
+    - label: "LinkedIn"
+      icon: "fa-brands fa-linkedin"
+      url: "https://www.linkedin.com/in/matthimrod/"
+
