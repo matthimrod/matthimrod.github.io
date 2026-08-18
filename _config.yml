@@ -6,7 +6,7 @@ description: >
   This is my personal website.
 
 url: "https://matthimrod.com"
-baseurl: "https://matthimrod.com"
+baseurl: ""
 repository: "matthimrodtest/matthimrod.github.io"
 
 remote_theme: "mmistakes/minimal-mistakes@4.28.1"
