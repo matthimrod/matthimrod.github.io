@@ -1,5 +1,4 @@
 ---
-layout: post
 title: 'PowerShell for Data Transformation: XML'
 subtitle: PowerShell makes more quick data transformations easy
 tags: [powershell, code]

@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Storing dotfiles in GitHub
 subtitle: Using a bare repository for dotfiles
 tags: [howto]

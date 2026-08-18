@@ -1,5 +1,4 @@
 ---
-layout: post
 title: 'PowerShell for Data Transformation: JSON'
 subtitle: PowerShell makes quick data transformations easy
 tags: [powershell, code]

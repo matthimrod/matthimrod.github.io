@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Raspberry Pi Setup Script
 subtitle: Automate tedious pi setup
 tags: [raspberrypi, howto]

@@ -1,5 +1,4 @@
 ---
-layout: post
 title: PowerShell Short Scripts
 subtitle: Mirth Connect Channel Inspection
 tags: [howto]

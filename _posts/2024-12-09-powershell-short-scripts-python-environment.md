@@ -1,5 +1,4 @@
 ---
-layout: post
 title: PowerShell Short Scripts
 subtitle: Python Environment Inspection
 tags: [howto]

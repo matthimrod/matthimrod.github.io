@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Raspberry Pi Zero W "Busy Light"
 subtitle: A Practical Raspberry Pi Project
 gh-repo: matthimrod/busylight

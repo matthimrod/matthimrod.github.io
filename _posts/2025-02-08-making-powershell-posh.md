@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Making PowerShell "Posh"
 tags: [howto]
 author: Matt Himrod

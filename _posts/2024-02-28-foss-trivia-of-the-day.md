@@ -1,5 +1,4 @@
 ---
-layout: post
 title: FOSS (Free and Open Source Software) Trivia of the Day
 subtitle: a.k.a. Why I Don't Use Nano
 tags: [texteditor, trivia]

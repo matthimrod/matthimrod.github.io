@@ -1,5 +1,4 @@
 ---
-layout: post
 title: OpenVPN On Raspberry Pi
 subtitle: Setting up a VPN for personal use
 tags: [vpn, howto]

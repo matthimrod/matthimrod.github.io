@@ -1,5 +1,4 @@
 ---
-layout: post
 title: More PowerShell Short Scripts
 tags: [howto]
 author: Matt Himrod

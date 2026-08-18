@@ -1,5 +1,4 @@
 ---
-layout: post
 title: 'PowerShell for Data Transformation: StringData'
 subtitle: PowerShell to the rescue!
 tags: [powershell, code]

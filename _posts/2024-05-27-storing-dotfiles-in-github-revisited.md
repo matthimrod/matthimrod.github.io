@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Storing dotfiles in GitHub Revisited
 subtitle: Using dotbot to bootstrap a dotfiles repository
 tags: [howto]

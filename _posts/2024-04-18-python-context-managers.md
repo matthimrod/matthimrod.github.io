@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Python Context Managers
 tags: [python, code]
 author: Matt Himrod
