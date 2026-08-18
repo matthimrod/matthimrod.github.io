@@ -5,6 +5,7 @@ author:
 description: >
   This is my personal website.
 
+url: "https://matthimrod.com"
 baseurl: "https://matthimrod.com"
 repository: "matthimrodtest/matthimrod.github.io"
 
