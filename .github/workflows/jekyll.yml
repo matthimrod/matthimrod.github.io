@@ -1,4 +1,4 @@
-name: Deploy Pages Site
+name: Build & Deploy Jekyll Site
 
 on:
   push:
